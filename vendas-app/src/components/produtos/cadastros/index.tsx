@@ -1,96 +1,72 @@
 import { use, useState } from "react";
-import { Layout, Input } from "components";
+import { Layout, Input, TextArea } from "components";
 
 export const CadastroProdutos: React.FC = () => {
-
-  const [sku, setSku] = useState<string>('')
-  const [preco, setPreco] = useState<string>()
-  const [nome, setNome] = useState<string>('')
-  const [descricao, setDescricao] = useState<string>('')
+  const [sku, setSku] = useState<string>("");
+  const [preco, setPreco] = useState<string>();
+  const [nome, setNome] = useState<string>("");
+  const [descricao, setDescricao] = useState<string>("");
 
   const submit = () => {
     const produto = {
       sku,
       preco,
       nome,
-      descricao
-    }
-    console.log(produto)
-  }
+      descricao,
+    };
+    console.log(produto);
+  };
 
   return (
     <Layout titulo="Produtos">
       <div className="columns">
-        <Input 
-          onChange={setSku} 
-          label="SKU: *" 
+        <Input
+          onChange={setSku}
+          label="SKU: *"
           columnClass="is-half"
           value={sku}
           id="inputSku"
           placeholder="SKU do produto"
         />
-        
-        <div className="column">
-          <div className="field">
-            <label className="label" htmlFor="inputPreco">
-              Preço: *
-            </label>
-            <div className="control">
-              <input
-                type="text"
-                className="input"
-                id="inputPreco"
-                value={preco}
-                onChange={e => setPreco(e.target.value)}
-                placeholder="Digite o preco"
-              />
-            </div>
-          </div>
-        </div>
+
+        <Input
+          onChange={setPreco}
+          label="Preço: *"
+          columnClass="is-half"
+          value={preco}
+          id="inputPreco"
+          placeholder="Preço do produto"
+        />
       </div>
 
       <div className="columns">
-        <div className="column is-full">
-          <div className="field">
-            <label className="label" htmlFor="inputNome">
-              Nome: *
-            </label>
-            <div className="control">
-              <input
-                type="text"
-                className="input"
-                id="inputNome"
-                value={nome}
-                onChange={e => setNome(e.target.value)}
-                placeholder="Digite o nome do produto"
-              />
-            </div>
-          </div>
-        </div>
+        <Input
+          onChange={setNome}
+          label="Nome : *"
+          columnClass="is-full"
+          value={nome}
+          id="inputNome"
+          placeholder="Nome do produto"
+        />
       </div>
 
       <div className="columns">
-        <div className="column is-full">
-          <div className="field">
-            <label className="label" htmlFor="inputDesc">
-              Descrição: *
-            </label>
-            <div className="control">
-              <textarea
-                className="textarea"
-                id="inputDesc"
-                value={descricao}
-                onChange={e => setDescricao(e.target.value)}
-                placeholder="Digite a descrição do produto"
-              />
-            </div>
-          </div>
-        </div>
+        <TextArea
+          onChange={setDescricao}
+          label="Descrição: *"
+          columnClass="is-full "
+          value={descricao}
+          id="inputDesc"
+          placeholder="Descrição do produto"
+          rows={4}
+        />
       </div>
 
       <div className="field is-grouped">
         <div className="control">
-          <button onClick={submit} className="button is-link">Salvar</button>
+          <button onClick={submit} className="button is-link">
+            Salvar
+          </button>
         </div>
         <div className="control">
           <button className="button is-link is-light">Voltar</button>
